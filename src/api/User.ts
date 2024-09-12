@@ -1,15 +1,25 @@
-import { sql } from '@vercel/postgres';
+import mysql, { RowDataPacket } from 'mysql2/promise';
 
-export async function createUser(name: string, email: string) {
-  await sql`INSERT INTO users (name, email) VALUES (${name}, ${email})`;
+const pool = mysql.createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  database: process.env.MYSQL_DATABASE
+});
+
+interface employees extends RowDataPacket {
+  id: number;
+  name: string;
+  position: string;
+  salary: number;
 }
 
-export async function allUsers() {
+export const getUsers = async () => {
   try {
-    const users = await sql`SELECT * FROM users`;
-    return users;
+    const [rows] = await pool.query<employees[]>('SELECT * FROM employees');
+    return rows;
   } catch (error) {
-    console.error(error);
+    console.error('Error executing query', error);
     return [];
   }
 }

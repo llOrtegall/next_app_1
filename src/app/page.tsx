@@ -1,7 +1,7 @@
-import { allUsers } from '../api/User'
+import { getUsers } from '../api/User'
 
 export default async function Home() {
-  const users = await allUsers()
+  const users = await getUsers()
 
   return (
     <section>

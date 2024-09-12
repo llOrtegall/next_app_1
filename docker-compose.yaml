@@ -3,13 +3,12 @@ version: '3.9'
 services:
 
   db:
-    image: postgres:12.20-alpine3.20
-    restart: always
-    shm_size: 128mb
+    image: mysql:8.2.0
+    container_name: db_container
     ports:
-      - "5432:5432"
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
+      - "3306:3306"
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: db_test
+    volumes:
+      - ./db-data:/var/lib/mysql
