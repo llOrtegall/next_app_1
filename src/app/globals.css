@@ -7,5 +7,5 @@ input[type="text"], input[type="number"], select, textarea {
 } 
 
 form label {
-  @apply text-xs text-gray-600 font-bold uppercase block mt-2 mb-1;
+  @apply text-xs text-gray-600 font-bold uppercase block mt-3 mb-1;
 }
