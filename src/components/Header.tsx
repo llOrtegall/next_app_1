@@ -29,7 +29,9 @@ export default function Header({ session }: { session: Session }) {
         {
           session?.user && (
             <>
-              <Image src={session.user.image} alt='avatar' width={80} height={80}/>
+             <Link href='/account'>
+              <Image className='rounded-full' src={session.user.image as string} alt='avatar' width={34} height={34}/>
+             </Link>
             </>
             // <button className='ml-4 bg-red-600 text-white boder-0 px-6'
             //   onClick={() => signOut()}
