@@ -12,10 +12,10 @@ export default function Header({ session }: { session: Session }) {
     <header className='border-b p-4 flex items-center justify-between'>
       <Link href='/' className='text-blue-600 font-semibold text-2xl'>Markeplace</Link>
       <nav className='flex gap-4 *:rounded *:py-1'>
-        <button className='border border-blue-600 text-blue-600 inline-flex items-center gap-1 px-2 mr-2'>
+        <Link href='/new' className='border border-blue-600 text-blue-600 inline-flex items-center gap-1 px-2 mr-2'>
           <FontAwesomeIcon icon={faPlus} className='h-4' />
           <span>Post a ad</span>
-        </button>
+        </Link>
         <span className='border-r'></span>
         {
           !session?.user && (
